@@ -1,0 +1,78 @@
+# Visual Studio
+
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+
+bin/
+obj/
+out/
+
+# Rider (if ever used)
+
+.idea/
+
+# VS Code (optional)
+
+.vscode/
+
+# Logs
+
+*.log
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# NuGet
+
+*.nupkg
+packages/
+!packages/build/
+
+# Generated files
+
+Generated Files/
+
+# Test results
+
+TestResults/
+
+# Publish output
+
+publish/
+
+# Azure / deployment
+
+*.Publish.xml
+*.pubxml
+
+# Resharper
+
+_ReSharper*/
+*.DotSettings.user
+
+# Temporary files
+
+*.tmp
+*.temp
+
+# SQLite (if used locally)
+
+*.db
+*.sqlite
+
+# Entity Framework migrations snapshot backup (optional)
+
+*MigrationsBackup*
+
+# Coverage results
+
+coverage/
+*.coverage
+*.coveragexml
