@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Final_Project_IMDB.Models;
+namespace Final_Project_IMDB.Models.Generated;
 
 public partial class Episode
 {
