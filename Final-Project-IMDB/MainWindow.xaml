@@ -1,12 +1,40 @@
 ﻿<Window x:Class="Final_Project_IMDB.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Final_Project_IMDB"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        xmlns:views="clr-namespace:Final_Project_IMDB.Views"
+        xmlns:viewmodels="clr-namespace:Final_Project_IMDB.ViewModels"
+        Title="IMDB Clone" Height="600" Width="800">
 
+    <Grid>
+        <Grid.RowDefinitions>
+            <!-- Navbar row -->
+            <RowDefinition Height="Auto"/>
+            <!-- Content row -->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Navbar -->
+        <views:NavbarView Grid.Row="0"/>
+
+        <!-- Dynamic Content -->
+        <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
+                    <views:HomeView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:ActorsViewModel}">
+                    <views:ActorsView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:TitlesViewModel}">
+                    <views:TitlesView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:ActorDetailViewModel}">
+                    <views:ActorDetailView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:TitleDetailViewModel}">
+                    <views:TitleDetailView/>
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
     </Grid>
 </Window>

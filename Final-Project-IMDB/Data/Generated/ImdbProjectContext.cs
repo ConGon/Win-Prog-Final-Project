@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Final_Project_IMDB.Data.Generated;
 
+// not partial class
+
 // Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=IMDB_Project;Integrated Security=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -ContextDir Data -Force
 
 public partial class ImdbProjectContext : DbContext

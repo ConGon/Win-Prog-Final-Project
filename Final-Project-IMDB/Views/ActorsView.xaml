@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="Final_Project_IMDB.Views.ActorsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+<Grid>
+
+    <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <!-- Scrollable content -->
+    <ScrollViewer Grid.Row="0">
+        <ItemsControl ItemsSource="{Binding Actors}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Content="{Binding PrimaryName}"
+                            Command="{Binding DataContext.SelectActorCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                            CommandParameter="{Binding}" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </ScrollViewer>
+
+    <!-- Pagination -->
+    <StackPanel Grid.Row="1" Orientation="Horizontal">
+        <Button Content="Prev" Command="{Binding PrevPageCommand}" />
+        <Button Content="Next" Command="{Binding NextPageCommand}" />
+    </StackPanel>
+
+</Grid>
+
+</UserControl>
