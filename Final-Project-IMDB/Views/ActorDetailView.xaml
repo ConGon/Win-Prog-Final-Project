@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="Final_Project_IMDB.Views.ActorDetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ScrollViewer>
+        <StackPanel Margin="20">
+
+            <TextBlock Text="{Binding SelectedActor.PrimaryName}"
+                       FontSize="24"
+                       FontWeight="Bold"/>
+
+            <TextBlock Text="{Binding SelectedActor.PrimaryProfession}"
+                       Margin="0,5,0,15"/>
+
+            <TextBlock Text="Known For"
+                       FontWeight="Bold"/>
+
+            <ItemsControl ItemsSource="{Binding KnownFor}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding PrimaryTitle}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+    </ScrollViewer>
+
+</UserControl>
