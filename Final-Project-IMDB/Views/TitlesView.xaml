@@ -2,32 +2,53 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-<Grid>
+    <Grid>
 
-    <Grid.RowDefinitions>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="Auto"/>
-    </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-    <!-- Scrollable content -->
-    <ScrollViewer Grid.Row="0">
-        <ItemsControl ItemsSource="{Binding Titles}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Button Content="{Binding PrimaryTitle}"
-                            Command="{Binding DataContext.SelectTitleCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                            CommandParameter="{Binding}" />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </ScrollViewer>
+        <!-- Top controls -->
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal"
+                    Margin="10">
 
-    <!-- Pagination -->
-    <StackPanel Grid.Row="1" Orientation="Horizontal">
-        <Button Content="Prev" Command="{Binding PrevPageCommand}" />
-        <Button Content="Next" Command="{Binding NextPageCommand}" />
-    </StackPanel>
+            <Button Content="Sort by Rating"
+                    Command="{Binding SortByRatingCommand}"
+                    Width="140"
+                    Margin="0,0,10,0"/>
+        </StackPanel>
 
-</Grid>
+        <!-- Scrollable content -->
+        <ScrollViewer Grid.Row="1">
+
+            <ItemsControl ItemsSource="{Binding Titles}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding PrimaryTitle}"
+                                Margin="5"
+                                Padding="5"
+                                Command="{Binding DataContext.SelectTitleCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                CommandParameter="{Binding}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </ScrollViewer>
+
+        <!-- Pagination -->
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Margin="10">
+
+            <Button Content="Prev" Command="{Binding PrevPageCommand}" Width="80"/>
+            <Button Content="Next" Command="{Binding NextPageCommand}" Width="80" Margin="10,0,0,0"/>
+
+        </StackPanel>
+
+    </Grid>
 
 </UserControl>

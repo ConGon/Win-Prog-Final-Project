@@ -28,8 +28,6 @@ namespace Final_Project_IMDB.ViewModels
 
         private void LoadPage()
         {
-            Actors.Clear();
-
             using var db = new ImdbProjectContext();
 
             var page = db.Names
@@ -38,7 +36,31 @@ namespace Final_Project_IMDB.ViewModels
                 .Take(PageSize)
                 .ToList();
 
+            Actors.Clear();
             foreach (var a in page)
+                Actors.Add(a);
+        }
+
+        public void ApplyFilter(string query)
+        {
+            using var db = new ImdbProjectContext();
+
+            if (string.IsNullOrWhiteSpace(query))
+            {
+                _skip = 0;
+                LoadPage();
+                return;
+            }
+
+            var results = db.Names
+                .Where(n => n.PrimaryName.Contains(query))
+                .OrderBy(n => n.NameId)
+                .Take(200)
+                .ToList();
+
+            Actors.Clear();
+
+            foreach (var a in results)
                 Actors.Add(a);
         }
 
@@ -59,7 +81,7 @@ namespace Final_Project_IMDB.ViewModels
         private void OpenActor(Name actor)
         {
             var main = (MainViewModel)System.Windows.Application.Current.MainWindow.DataContext;
-            main.CurrentViewModel = new ActorDetailViewModel(actor);
+            main.CurrentViewModel = new ActorDetailViewModel(actor, main);
         }
     }
 }
