@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="Final-Project-IMDB.Tests/Final-Project-IMDB.Tests.csproj" Id="a1815e06-814e-4a42-9ca8-2083a3a906dc" />
   <Project Path="Final-Project-IMDB/Final-Project-IMDB.csproj" />
 </Solution>
